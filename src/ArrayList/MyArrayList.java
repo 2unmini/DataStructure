@@ -24,4 +24,28 @@ public class MyArrayList {
         }
         this.arr[index] = data;
     }
+
+    public void removeData(int data) {
+        int targetIndex = -1;
+        for (int i = 0; i < this.arr.length; i++) {
+            if (arr[i] == data) {
+                targetIndex = i;
+            }
+        }
+        if (targetIndex == -1) {
+            System.out.println("일치 하는 데이터가 없습니다.");
+        } else {
+            int[] cloneArray = this.arr.clone();
+            this.arr = new int[this.arr.length - 1];
+
+            for (int i = 0; i < targetIndex; i++) {
+                this.arr[i] = cloneArray[i];
+            }
+            for (int i = targetIndex; i < this.arr.length; i++) {
+                this.arr[i] = cloneArray[i + 1];
+            }
+        }
+    }
+
+
 }
